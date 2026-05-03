@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solana Wallet Connect</title>
+  <style>
+    body {
+        font-family: system-ui, sans-serif;
+        max-width: 720px;
+        margin: 40px auto;
+        padding: 0 20px;
+        background: #1a1a2e;
+        color: #e0e0e0;
+      }
+      h1 { color: #00ffa3; }
+      .wallet-list { margin: 20px 0; }
+      .wallet-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 12px 16px;
+        margin: 8px 0;
+        background: #16213e;
+        color: #e0e0e0;
+        border: 1px solid #333;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .wallet-btn:hover { border-color: #00ffa3; }
+      .wallet-btn img { width: 32px; height: 32px; border-radius: 4px; }
+      .connected {
+        background: #16213e;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+      .address {
+        font-family: monospace;
+        font-size: 14px;
+        word-break: break-all;
+        color: #00ffa3;
+        margin: 8px 0;
+      }
+      .balance { font-size: 28px; margin: 16px 0; }
+      .disconnect-btn {
+        padding: 8px 16px;
+        background: transparent;
+        color: #ff4444;
+        border: 1px solid #ff4444;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .disconnect-btn:hover { background: #ff444420; }
+      #status { color: #888; margin: 10px 0; }
+      #error { color: #ff4444; margin: 10px 0; }
+      .no-wallets {
+        padding: 20px;
+        background: #16213e;
+        border-radius: 8px;
+        text-align: center;
+        color: #888;
+      }
+      .no-wallets a { color: #00ffa3; }
+  </style>
+</head>
+<body>
+  <h1>Connect a Solana Wallet</h1>
+  <div id="status">Looking for wallets...</div>
+  <div id="error"></div>
+  <div class="wallet-list" id="wallet-list"></div>
+  <div class="connected" id="connected" style="display: none"></div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

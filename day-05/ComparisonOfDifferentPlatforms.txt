@@ -1,3 +1,5 @@
+Different types of wallet : 
+
 1. CLI wallet (you’ve done this)
 
 Already generated a keypair with solana-keygen in an earlier challenge.

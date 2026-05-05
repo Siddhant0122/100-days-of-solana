@@ -1,0 +1,33 @@
+1. CLI wallet (you’ve done this)
+
+Already generated a keypair with solana-keygen in an earlier challenge.
+
+solana address
+solana balance
+
+Your private key lives in a JSON file at ~/.config/solana/id.json. That’s it, a file on disk. Anyone who can read that file can sign transactions as you. There’s no password prompt, no confirmation dialog, no 2FA. This is a hot wallet in the most literal sense: your key is a plaintext file on an internet-connected machine. That’s fine for devnet work and local development. It’s exactly how most Solana developers interact with their programs during testing. But you wouldn’t store real value this way.
+
+2. Browser extension wallet
+
+Create a password. This encrypts the private key at rest in your browser’s storage.
+You get a seed phrase (usually 12 or 24 words). This is a human-readable recovery phrase for the wallet. From it, the wallet can derive the private keys for your accounts. Write it down physically. If you lose the device, this is usually how you recover access.
+The extension generates your keypair and shows your public address.
+Now switch the wallet to devnet in its settings, then request an airdrop through the wallet’s UI or use the faucet at faucet.solana.com. In Phantom, this is usually under Settings and Developer Settings.
+
+Compare this to the CLI: same keypair concept underneath, but the browser wallet adds a password layer, gives you a recovery seed phrase, and shows a confirmation popup every time a site wants to sign a transaction. That popup is doing real work. It’s the reason browser wallets are safer for everyday use than a plaintext JSON file. You see what you’re approving before you approve it.
+
+3. Mobile wallet
+
+Notice the differences from the browser experience:
+
+Mobile wallets often support biometric auth (Face ID, fingerprint) instead of or alongside a password.
+The seed phrase backup flow is the same. This is common across non-custodial wallets.
+Depending on the wallet and device, some mobile wallets can use OS- or hardware-backed secure storage for key material.
+Switch to devnet and airdrop again. Then try sending a small amount of devnet SOL (e.g. 0.01 SOL) from your mobile wallet to your CLI wallet address. You can verify it arrived with solana balance. This is your first cross-wallet transfer: same network, different keypairs, different security models. You now have three wallets, three different keypairs, each with a devnet SOL balance.
+
+Further reading: hardware and multisig wallets
+Two other wallet types are worth knowing about, though they’re harder to try on devnet:
+
+A hardware wallet like a Ledger stores your private key on a separate physical device. The key never leaves the device. When you need to sign a transaction, the transaction data is sent to the device, signed there, and the signed result is sent back. Your computer never sees the private key. This is a cold wallet: high security, lower convenience. Most people use these for storing real value.
+
+A multisig wallet (like Squads on Solana) requires multiple people to approve a transaction before it executes. Think of it like requiring two signatures on a company check. DAOs and teams use these to manage shared treasuries so no single person can move funds alone.

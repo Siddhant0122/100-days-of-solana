@@ -1,1 +1,1 @@
-## This is a theoretical phase to learn about different wallets types.
+## This is a theoretical phase to learn about different wallets types and it's features.

@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@solana/kit": "^6.8.0",
-    "@wallet-standard/app": "^1.1.0"
-  }
-}

@@ -1,30 +1,30 @@
-# What You’ll Need <br>
-A terminal with the Solana CLI installed<br>
-Your Solana CLI configured to devnet (solana config set --url https://api.devnet.solana.com)<br>
-A devnet wallet with some SOL (run solana airdrop 2 if needed)<br>
-A text editor or notes app for your comparison table<br>
-<br>
-Inspect your own wallet account<br>
-<br>
-Every wallet on Solana is an account. Let’s look at yours. Run the following command to get your wallet’s public key:<br>
-<br>
+# What You’ll Need   
+A terminal with the Solana CLI installed  
+Your Solana CLI configured to devnet (solana config set --url https://api.devnet.solana.com)  
+A devnet wallet with some SOL (run solana airdrop 2 if needed)  
+A text editor or notes app for your comparison table  
+  
+Inspect your own wallet account  
+  
+Every wallet on Solana is an account. Let’s look at yours. Run the following command to get your wallet’s public key:  
+  
 ** >>>solana address **
-<br>
+  
 Now inspect that account:
-<br>
->>>solana account $(solana address)<br>
-<br>
-In a traditional database, user record might live in a users table with columns like id, balance, and email. On Solana, this account is “row,” but instead of living in a table that a single server controls, it lives on a global ledger that thousands of validators maintain together.<br>
-<br>
-Inspect a program account<br>
-<br>
-Now look at something executable. The Token Program manages all SPL tokens on Solana. Inspect it:<br>
-<br>
-solana account TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA<br>
-<br>
-Notice the differences: the executable field is true, and the owner is the BPF Loader. This account stores compiled program code, not user data. In Web2 terms, this is like the application binary that lives on your server, while your wallet was like a record in a database. On Solana, both code and data live in the same account model, not separate systems.<br>
-<br>
-<br>
+  
+>>>solana account $(solana address)  
+  
+In a traditional database, user record might live in a users table with columns like id, balance, and email. On Solana, this account is “row,” but instead of living in a table that a single server controls, it lives on a global ledger that thousands of validators maintain together.  
+  
+Inspect a program account  
+  
+Now look at something executable. The Token Program manages all SPL tokens on Solana. Inspect it:  
+  
+solana account TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA  
+  
+Notice the differences: the executable field is true, and the owner is the BPF Loader. This account stores compiled program code, not user data. In Web2 terms, this is like the application binary that lives on your server, while your wallet was like a record in a database. On Solana, both code and data live in the same account model, not separate systems.  
+  
+  
 | Concept | Traditional Database | Solana Accounts |
 |---|---|---|
 | Data location | Rows in tables on a centralized server | Accounts on a distributed ledger across validators |
@@ -37,15 +37,15 @@ Notice the differences: the executable field is true, and the owner is the BPF L
 | Code vs data | Application code and database are separate systems | Both are accounts; programs (code) and data accounts coexist in the same model |
 | Deletion | DELETE query removes the row | Close the account; lamports are returned to you |
 | Visibility | Private by default; you choose what to expose | Public by default; anyone can read any account's data |
-<br>
-<br>
+  
+  
 In a database, storage costs are part of your hosting bill. On Solana, storage costs are explicit: you deposit lamports proportional to the size of the data you want to store. This deposit is fully refundable when you close the account.
-<br>
-Check how much it costs to store different amounts of data:<br>
-<br>
->>>solana rent 0<br>
->>>solana rent 100<br>
->>>solana rent 1000<br>
-<br>
+  
+Check how much it costs to store different amounts of data:  
+  
+>>>solana rent 0  
+>>>solana rent 100  
+>>>solana rent 1000  
+  
 The solana rent command uses the getMinimumBalanceForRentExemption RPC method under the hood. Notice how the cost scales linearly with data size. Compare that to traditional databases where storage cost is abstracted into infrastructure pricing rather than attached directly to each record.
-<br>
+  

@@ -8,7 +8,7 @@ Inspect your own wallet account
   
 Every wallet on Solana is an account. Let’s look at yours. Run the following command to get your wallet’s public key:  
   
-** >>>solana address **
+>>>solana address 
   
 Now inspect that account:
   
@@ -20,7 +20,7 @@ Inspect a program account
   
 Now look at something executable. The Token Program manages all SPL tokens on Solana. Inspect it:  
   
-solana account TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA  
+>>>solana account TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA  
   
 Notice the differences: the executable field is true, and the owner is the BPF Loader. This account stores compiled program code, not user data. In Web2 terms, this is like the application binary that lives on your server, while your wallet was like a record in a database. On Solana, both code and data live in the same account model, not separate systems.  
   

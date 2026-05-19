@@ -8,7 +8,7 @@ Inspect your own wallet account<br>
 <br>
 Every wallet on Solana is an account. Let’s look at yours. Run the following command to get your wallet’s public key:<br>
 <br>
->>>solana address
+** >>>solana address **
 <br>
 Now inspect that account:
 <br>
@@ -26,17 +26,17 @@ Notice the differences: the executable field is true, and the owner is the BPF L
 <br>
 <br>
 | Concept | Traditional Database | Solana Accounts |
-|----------|----------------------|-----------------|
-| Data location | Rows in tables <br> on a centralized server | Accounts on a distributed ledger <br> across validators |
-| Schema | Defined by the database <br> (SQL DDL, document schema) | Defined by the owning program <br> stored as raw bytes in the account’s `data` field |
-| Access control | Application-level auth <br> (SQL roles, app middleware) | Enforced by the runtime <br> only the owning program can modify an account <br> and only with the required signer(s) |
-| Cost of storage | Server/cloud hosting fees <br> pay for disk space | Rent-exempt deposit proportional to data size <br> query via `solana rent` <br> refundable when the account is closed |
-| Identity/keys | Auto-increment IDs <br> UUIDs | 32-byte public keys <br> or Program Derived Addresses (PDAs) |
-| Reads | SQL queries <br> document lookups | RPC calls <br> (`getAccountInfo`, `getProgramAccounts`) |
-| Writes | INSERT/UPDATE <br> via application code | Transactions with instructions <br> signed by authorized keys |
-| Code vs data | Application code and database <br> are separate systems | Both are accounts <br> programs (code) and data accounts <br> coexist in the same model |
-| Deletion | DELETE query <br> removes the row | Close the account <br> lamports are returned to you |
-| Visibility | Private by default <br> you choose what to expose | Public by default <br> anyone can read any account’s data |
+|---|---|---|
+| Data location | Rows in tables on a centralized server | Accounts on a distributed ledger across validators |
+| Schema | Defined by the database (SQL DDL, document schema) | Defined by the owning program; stored as raw bytes in the account's `data` field |
+| Access control | Application-level auth (SQL roles, app middleware) | Enforced by the runtime: only the owning program can modify an account, and only with the required signer(s) |
+| Cost of storage | Server/cloud hosting fees, pay for disk space | Rent-exempt deposit proportional to data size (query via `solana rent`); refundable when the account is closed |
+| Identity / keys | Auto-increment IDs, UUIDs | 32-byte public keys or Program Derived Addresses (PDAs) |
+| Reads | SQL queries, document lookups | RPC calls (`getAccountInfo`, `getProgramAccounts`) |
+| Writes | INSERT/UPDATE via application code | Transactions with instructions, signed by authorized keys |
+| Code vs data | Application code and database are separate systems | Both are accounts; programs (code) and data accounts coexist in the same model |
+| Deletion | DELETE query removes the row | Close the account; lamports are returned to you |
+| Visibility | Private by default; you choose what to expose | Public by default; anyone can read any account's data |
 <br>
 <br>
 In a database, storage costs are part of your hosting bill. On Solana, storage costs are explicit: you deposit lamports proportional to the size of the data you want to store. This deposit is fully refundable when you close the account.

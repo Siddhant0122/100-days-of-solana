@@ -1,4 +1,5 @@
-# What You’ll Need   
+# Comparison of Solana accounts vs database
+** What You’ll Need   
 A terminal with the Solana CLI installed  
 Your Solana CLI configured to devnet (solana config set --url https://api.devnet.solana.com)  
 A devnet wallet with some SOL (run solana airdrop 2 if needed)  

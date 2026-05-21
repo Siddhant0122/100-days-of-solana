@@ -6,12 +6,12 @@ Steps:
 >>>solana-keygen new --no-bip39-passphrase -o /tmp/temp-wallet.json
 >>>solana transfer --allow-unfunded-recipient $(solana address -k /tmp/temp-wallet.json) 0.001 --url devnet
 
-Copy the transaction signature that gets printed to your terminal. It looks like a long base-58 string. This signature is not just a receipt. It is the first signature in the transaction and doubles as the transaction’s unique ID.
+    Copy the transaction signature that gets printed to your terminal. It looks like a long base-58 string. This signature is not just a receipt. It is the first signature in the transaction and doubles as the transaction’s unique ID.
 
 2. ### Inspect the transaction with the CLI. Use the solana confirm command with the verbose flag to pull apart the transaction:
 >>>solana confirm -v YOUR_TRANSACTION_SIGNATURE
 
-You’ll see output that includes the transaction’s status, the slot it was processed in, the accounts involved, and the instructions that were executed. Take a moment to read through it.
+    You’ll see output that includes the transaction’s status, the slot it was processed in, the accounts involved, and the instructions that were executed. Take a moment to read through it.
 
 3. ### Now open it in Solana Explorer. Paste your transaction signature into the search bar at explorer.solana.com. Make sure you switch the cluster to “Devnet” using the dropdown at the top of the page. The Explorer gives you a visual breakdown of the same data. Look for these sections:
     - Signature(s): The Ed25519 signatures that authorize this transaction. Each is 64 bytes. Your simple transfer has one signature (from your wallet). The first signature is also the transaction ID.
@@ -34,5 +34,5 @@ You’ll see output that includes the transaction’s status, the slot it was pr
     - The signatures are like authentication tokens, providing proof that the sender authorized this request.
     - The recent blockhash is like a CSRF token with a short expiry, preventing replay attacks and proving freshness.
 
-The key difference? HTTP requests are processed by one server. Solana transactions are validated by every validator in the network, and if any instruction in the transaction fails, all of them are rolled back atomically. Fees are still charged even on failure.
+    The key difference? HTTP requests are processed by one server. Solana transactions are validated by every validator in the network, and if any instruction in the transaction fails, all of them are rolled back atomically. Fees are still charged even on failure.
 

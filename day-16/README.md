@@ -6,34 +6,34 @@ Today, I will send a deliberate SOL transfer on devnet, understanding every step
 Steps
 1. ### Confirm your CLI is pointed at devnet. 
 Devnet is Solana’s testing network where you can experiment freely with no real money at stake. Run:
->solana config set -ud
+>solana config set -ud<br>
 Then verify your configuration:
->solana config get
+>solana config get<br>
 You should see RPC URL: https://api.devnet.solana.com in the output.
 
 2. ### Check your current balance.
->solana balance
+>solana balance<br>
 If your balance is zero or too low, airdrop some devnet SOL to yourself:
->solana airdrop 2
+>solana airdrop 2<br>
 This gives you 2 SOL on devnet to work with. Devnet airdrops are capped at 5 SOL per request. If you get rate-limited, you can also use the Solana Web Faucet as a backup.
 
 3. ### Generate a second keypair to use as your recipient.
 You need someone to send SOL to. Create a throwaway keypair:
->solana-keygen new --outfile ~/recipient-keypair.json --no-bip39-passphrase
+>solana-keygen new --outfile ~/recipient-keypair.json --no-bip39-passphrase<br>
 Note the public key it outputs. That is your recipient address.
 
 4. ### Send the transfer. 
 Replace `` with the public key from the previous step:
->solana transfer `` 0.5 --allow-unfunded-recipient
+>solana transfer `` 0.5 --allow-unfunded-recipient<br>
 The --allow-unfunded-recipient flag is necessary because your new recipient address has never received SOL before and does not yet have an account on-chain. Without this flag, the CLI would reject the transfer as a safety measure.
 
 5. ### Verify the transfer landed. 
 Check your own balance and the recipient’s balance:
->solana balance
->solana balance
+>solana balance<br>
+>solana balance <-Address of recipent-><br>
 Your balance should be roughly 1.5 SOL (2 minus 0.5, minus a tiny transaction fee). The recipient should show 0.5 SOL.
 
 6. ### Look up your transaction on the explorer. 
 When you ran the transfer command, the CLI printed a transaction signature (a long string of characters). Copy it and open this URL in your browser, replacing `` with your actual signature:
->https://explorer.solana.com/tx/?cluster=devnet
+>https://explorer.solana.com/tx/?cluster=devnet<br>
 Browse the transaction details. You will see the sender, recipient, amount, fee, and the block it was included in.

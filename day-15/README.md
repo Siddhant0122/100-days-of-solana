@@ -11,16 +11,16 @@ Copy the transaction signature that gets printed to your terminal. It looks like
 2. ### Inspect the transaction with the CLI. Use the solana confirm command with the verbose flag to pull apart the transaction:
 >solana confirm -v YOUR_TRANSACTION_SIGNATURE
 
-    You’ll see output that includes the transaction’s status, the slot it was processed in, the accounts involved, and the instructions that were executed. Take a moment to read through it.
+You’ll see output that includes the transaction’s status, the slot it was processed in, the accounts involved, and the instructions that were executed. Take a moment to read through it.
 
 3. ### Now open it in Solana Explorer. Paste your transaction signature into the search bar at explorer.solana.com. Make sure you switch the cluster to “Devnet” using the dropdown at the top of the page. The Explorer gives you a visual breakdown of the same data. Look for these sections:
-    - Signature(s): The Ed25519 signatures that authorize this transaction. Each is 64 bytes. Your simple transfer has one signature (from your wallet). The first signature is also the transaction ID.
-    - Account Keys: The list of public keys for every account the transaction touches. Look at how they are grouped: the fee payer comes first, then other signers, then read-only accounts. This ordering is not random. It maps to the message header.
-    - Recent Blockhash: A 32-byte hash of a recent block. This serves two purposes: it proves the transaction was created recently (blockhashes expire after about 150 slots, roughly 60-90 seconds), and it prevents the exact same transaction from being processed twice.
-    - Instruction(s): The actual operations. Your transfer has one instruction that invokes the System Program with a “Transfer” command, the source account, the destination account, and the amount in lamports.
+- Signature(s): The Ed25519 signatures that authorize this transaction. Each is 64 bytes. Your simple transfer has one signature (from your wallet). The first signature is also the transaction ID.
+- Account Keys: The list of public keys for every account the transaction touches. Look at how they are grouped: the fee payer comes first, then other signers, then read-only accounts. This ordering is not random. It maps to the message header.
+- Recent Blockhash: A 32-byte hash of a recent block. This serves two purposes: it proves the transaction was created recently (blockhashes expire after about 150 slots, roughly 60-90 seconds), and it prevents the exact same transaction from being processed twice.
+- Instruction(s): The actual operations. Your transfer has one instruction that invokes the System Program with a “Transfer” command, the source account, the destination account, and the amount in lamports.
 
 4. ### Map it to the official structure. Every Solana transaction is made up of two top-level parts:
-    1. Signatures: A compact array of 64-byte Ed25519 signatures. The number of signatures must match the num_required_signatures value in the message header.
+1. Signatures: A compact array of 64-byte Ed25519 signatures. The number of signatures must match the num_required_signatures value in the message header.
     2. Message: The payload that was signed. It contains:
         - Header: Three single-byte numbers describing how many signatures are required, how many of those signers are read-only, and how many unsigned accounts are read-only. These three numbers partition the account keys array into permission groups without needing per-account metadata flags.
         - Account Keys: A compact array of 32-byte public keys for every account referenced by any instruction.

@@ -3,13 +3,13 @@ Been reading data from Solana for the past week. Now it’s time to understand h
 
 Steps:
 1. ### Send a quick transfer on devnet so you have a transaction to inspect. This is your first time sending SOL, so pay attention to what happens:
->>>solana-keygen new --no-bip39-passphrase -o /tmp/temp-wallet.json
->>>solana transfer --allow-unfunded-recipient $(solana address -k /tmp/temp-wallet.json) 0.001 --url devnet
+>solana-keygen new --no-bip39-passphrase -o /tmp/temp-wallet.json
+>solana transfer --allow-unfunded-recipient $(solana address -k /tmp/temp-wallet.json) 0.001 --url devnet
 
-    Copy the transaction signature that gets printed to your terminal. It looks like a long base-58 string. This signature is not just a receipt. It is the first signature in the transaction and doubles as the transaction’s unique ID.
+Copy the transaction signature that gets printed to your terminal. It looks like a long base-58 string. This signature is not just a receipt. It is the first signature in the transaction and doubles as the transaction’s unique ID.
 
 2. ### Inspect the transaction with the CLI. Use the solana confirm command with the verbose flag to pull apart the transaction:
->>>solana confirm -v YOUR_TRANSACTION_SIGNATURE
+>solana confirm -v YOUR_TRANSACTION_SIGNATURE
 
     You’ll see output that includes the transaction’s status, the slot it was processed in, the accounts involved, and the instructions that were executed. Take a moment to read through it.
 

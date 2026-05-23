@@ -21,18 +21,18 @@ You’ll see output that includes the transaction’s status, the slot it was pr
 
 4. ### Map it to the official structure. Every Solana transaction is made up of two top-level parts:
 1. Signatures: A compact array of 64-byte Ed25519 signatures. The number of signatures must match the num_required_signatures value in the message header.
-    2. Message: The payload that was signed. It contains:
-        - Header: Three single-byte numbers describing how many signatures are required, how many of those signers are read-only, and how many unsigned accounts are read-only. These three numbers partition the account keys array into permission groups without needing per-account metadata flags.
-        - Account Keys: A compact array of 32-byte public keys for every account referenced by any instruction.
-        Recent Blockhash: The 32-byte blockhash described above.
-        - Instructions: A compact array of compiled instructions. Each compiled instruction contains a program ID index (pointing into the account keys array), an array of account indexes (also pointing into account keys), and a data byte array that the program interprets.
+2. Message: The payload that was signed. It contains:
+- Header: Three single-byte numbers describing how many signatures are required, how many of those signers are read-only, and how many unsigned accounts are read-only. These three numbers partition the account keys array into permission groups without needing per-account metadata flags.
+- Account Keys: A compact array of 32-byte public keys for every account referenced by any instruction.
+Recent Blockhash: The 32-byte blockhash described above.
+- Instructions: A compact array of compiled instructions. Each compiled instruction contains a program ID index (pointing into the account keys array), an array of account indexes (also pointing into account keys), and a data byte array that the program interprets.
 
 5. ### Compare it to HTTP. Think of it this way:
-    - The message header is like HTTP headers, providing metadata about permissions and structure.
-    - The account keys are like the URL paths and query parameters, telling the network which resources are involved.
-    - The instructions are like the request body, containing the actual operations you want performed.
-    - The signatures are like authentication tokens, providing proof that the sender authorized this request.
-    - The recent blockhash is like a CSRF token with a short expiry, preventing replay attacks and proving freshness.
+- The message header is like HTTP headers, providing metadata about permissions and structure.
+- The account keys are like the URL paths and query parameters, telling the network which resources are involved.
+- The instructions are like the request body, containing the actual operations you want performed.
+- The signatures are like authentication tokens, providing proof that the sender authorized this request.
+- The recent blockhash is like a CSRF token with a short expiry, preventing replay attacks and proving freshness.
 
-    The key difference? HTTP requests are processed by one server. Solana transactions are validated by every validator in the network, and if any instruction in the transaction fails, all of them are rolled back atomically. Fees are still charged even on failure.
+The key difference? HTTP requests are processed by one server. Solana transactions are validated by every validator in the network, and if any instruction in the transaction fails, all of them are rolled back atomically. Fees are still charged even on failure.
 

@@ -130,18 +130,18 @@ async function main(){
     console.log("Solana Transfer Tool");
     console.log("====================\n");
 
-    //1. Connect to devnet
+
     const rpc = createSolanaRpc(RPC_URL);
     const rpcSubscriptions = createSolanaRpcSubscriptions(WS_URL);
     console.log("Connected to Solana devnet.\n");
 
-    //2. Load the sender keypair
+
     const sender = await loadKeypair();
     console.log("Sender: ",sender.address);
     console.log("Recipents: ", recipentAddress.toString());
     console.log("Amount: ", solAmount,"SOL\n");
 
-    //3. Check sender's balance
+
     const {value: balance} = await rpc.getBalance(sender.address).send();
     const balanceInSol = Number(balance)/ Number(LAMPORTS_PER_SOL);
     console.log(`Sender balance: ${balanceInSol} SOL`);
@@ -166,7 +166,7 @@ async function main(){
         console.error(error.message);
         process.exit(1);
     }
-    //7. Show Updated balance
+
     const {value: newBalance} = await rpc.getBalance(sender.address).send();
     const newBalanceInSol = Number(newBalance)/ Number(LAMPORTS_PER_SOL);
     console.log(`\nNew sender balance: ${newBalanceInSol} SOL`);

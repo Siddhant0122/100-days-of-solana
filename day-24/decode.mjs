@@ -97,12 +97,18 @@ if(hasMintAuthority){
     manualMintAuthority = base58Decoder.decode(authorityBytes);
 }
 
-const manualSupply = view.getBigUInt64(36, true);
+const manualSupply = view.getBigUint64(36, true);
 const manualDecimals = view.getUint8(44);
 const manualIsInitialized = view.getUint8(45) === 1;
 
 const hasFreezeAuthority = view.getUint32(46, true) === 1;
 
+let manualFreezeAuthority = "None";
+
+if(hasFreezeAuthority){
+    const freezeAuthorityBytes = dataBytes.slice(50,82);
+    manualFreezeAuthority = base58Decoder.decode(freezeAuthorityBytes);
+}
 
 console.log("Mint Authority:", manualMintAuthority);
 console.log("Supply:", manualSupply.toString());

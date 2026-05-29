@@ -35,7 +35,7 @@ Take note of that Owner field. The string of all 1s is the public key of the Sys
 The System Program is also an account on Solana. Let’s look at it.
 
 > solana account 11111111111111111111111111111111
-> Notice the differences from your wallet:
+Notice the differences from your wallet:
 
 Executable is true, because this account contains program code
 Owner is NativeLoader1111111111111111111111111111111, the loader responsible for Solana’s built-in native programs

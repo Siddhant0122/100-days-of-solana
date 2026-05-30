@@ -7,3 +7,4 @@ Day 14: I shared with the community what I learned and found most fascinating in
 Day 20: I posted a blog on transaction.<br>
 Day 21: I shared with community what I made in Week 3 which was a CLI transaction tool(day-18).<br>
 Day 25: I explored Jupiter's program on Solana Explorer and learned how a single swap secretly triggers 4 to 7 transactions across multiple DEXes all in one block.<br>
+Day 26: I posted a blog on Solana's Account Model.<br>

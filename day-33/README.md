@@ -65,4 +65,3 @@ Check your balance again:
 >spl-token balance YOUR_MINT_ADDRESS --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb
 
 You should now have 7 tokens. The burn went through. The transfer did not. That distinction is what makes non-transferable tokens useful.
-

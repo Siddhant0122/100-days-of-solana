@@ -12,6 +12,7 @@ On Solana, I do not need a backend service sitting between users to collect fees
 You have created tokens before, but this time you are going to add the transfer fee extension at creation time. Extensions must be configured when the mint is first created; you cannot add them later. The --program-id below points at the Token-2022 Program, which is required for any token using extensions. Run the following command to create a new token with a 1% transfer fee (100 basis points) and a maximum fee of 5,000 base units:
 
 >spl-token create-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb --transfer-fee-basis-points 100 --transfer-fee-maximum-fee 5000
+
 A basis point is 1/100th of a percent, so 100 basis points equals 1%. The maximum fee caps how much can be withheld on a single transfer, regardless of the transfer amount.
 
 Note that --transfer-fee-maximum-fee 5000 is expressed in base units, not whole displayed tokens. The displayed amount depends on the mint’s decimals: with the spl-token CLI default of 9 decimals, 5,000 base units is a very small fraction of one displayed token. If you want the cap to equal 5,000 displayed tokens, you would also need to set --decimals 0 (or scale the value to match your chosen decimals).
@@ -23,7 +24,9 @@ Save the mint address from the output; you will need it for the remaining steps.
 This works just like it did yesterday. Create a token account for your wallet and mint tokens into it:
 
 >spl-token create-account [MINT_ADDRESS]
+
 >spl-token mint [MINT_ADDRESS] 1000
+
 You now have 1,000 tokens in your wallet’s token account.
 
 Step 3: Create a token account for your second wallet.
@@ -31,6 +34,7 @@ Step 3: Create a token account for your second wallet.
 You need a destination for the transfer. Create the associated token account for your second wallet’s owner address. You will sign and pay for the account creation from your main wallet:
 
 >spl-token create-account [MINT_ADDRESS] --owner [SECOND_WALLET_OWNER_ADDRESS] --fee-payer ~/.config/solana/id.json
+
 [SECOND_WALLET_OWNER_ADDRESS] is the public key of your second keypair (the wallet address), not a token account address. Take note of the token account address that this command prints; you will reuse it in Step 6.
 
 #### Step 4: Transfer tokens and watch the fee get withheld.
@@ -40,6 +44,7 @@ When transferring tokens that have a transfer fee, you must include the --expect
 Pass the second wallet’s owner address as the recipient and let the CLI resolve to the associated token account you just created:
 
 >spl-token transfer [MINT_ADDRESS] 100 [SECOND_WALLET_OWNER_ADDRESS] --expected-fee 1
+
 Because the destination account already exists, you do not need --allow-unfunded-recipient here.
 
 #### Step 5: Check the balances.
@@ -47,7 +52,9 @@ Because the destination account already exists, you do not need --allow-unfunded
 Now look at what happened. Check the balance of both wallets:
 
 >spl-token balance [MINT_ADDRESS]
+
 >spl-token balance [MINT_ADDRESS] --owner [SECOND_WALLET_OWNER_ADDRESS]
+
 Your wallet should show 900 tokens (you sent 100). The second wallet should show 99 tokens, not 100. Where did the other token go? It was withheld. It is sitting in the second wallet’s token account, but the second wallet cannot touch it. Only the withdraw withheld authority — which, by default, is the wallet that created the mint — can collect it.
 
 #### Step 6: Withdraw the withheld fees.
@@ -59,8 +66,10 @@ Because your wallet is the withdraw withheld authority (it was set when you crea
 The withdraw-withheld-tokens subcommand takes the destination token account first, followed by one or more source token accounts to pull fees from. Use your own token account as the destination and the second wallet’s token account (from Step 3) as the source
 
 >spl-token withdraw-withheld-tokens [YOUR_TOKEN_ACCOUNT_ADDRESS] [SECOND_WALLET_TOKEN_ACCOUNT_ADDRESS]
+
 This pulls the withheld fees from the second wallet’s token account into your token account. Check your balance again to confirm:
 
 >spl-token balance [MINT_ADDRESS]
+
 You should now see 901 tokens: your original 900 plus the 1 token that was withheld as a fee.
 

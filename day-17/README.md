@@ -9,7 +9,9 @@ Think of it this way: You’ve proved the concept with the CLI. Today you build 
 Create a new directory for your transfer tool and initialize it:
 
 >mkdir sol-transfer-tool &amp;&amp; cd sol-transfer-tool
+
 >npm init -y
+
 >npm install @solana/kit @solana-program/system
 
 The @solana/kit package is the modern Solana JavaScript SDK (formerly known as @solana/web3.js 2.0). It is tree-shakable, has zero external dependencies, and uses BigInt for all amounts to match how Solana programs handle numbers in Rust. The @solana-program/system package provides typed helpers for the System Program, including the transfer instruction you need.
@@ -27,6 +29,7 @@ Open your package.json and add "type": "module" so you can use ES module imports
 You need a recipient address. Open a second terminal and generate a fresh keypair using the Solana CLI:
 
 >solana-keygen new --outfile ~/.config/solana/recipient.json --no-bip39-passphrase
+
 Copy the public key it prints. That is the address you will pass to your tool.
 
 ### Run It

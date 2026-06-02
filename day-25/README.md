@@ -9,11 +9,15 @@ Think of it this way: if Solana’s account model is a filing system, the System
 Make sure your CLI is pointed at devnet and that you have a keypair ready.
 
 > solana config set --url devnet
+
 > solana address
+
 > solana balance
+
 If your balance is zero, airdrop some devnet SOL:
 
 > solana airdrop 2
+
 > Note: The devnet airdrop can sometimes fail due to rate limiting. If this happens use the web faucet instead.
 
 #### Step 2: Inspect your own wallet account
@@ -21,6 +25,7 @@ If your balance is zero, airdrop some devnet SOL:
 Your wallet is a system account, meaning it is owned by the System Program. Let’s look at its raw structure.
 
 > solana account $(solana address)
+
 You should see output showing five key fields:
 
 Lamports: your balance in the smallest unit of SOL (1 SOL = 1,000,000,000 lamports)
@@ -35,6 +40,7 @@ Take note of that Owner field. The string of all 1s is the public key of the Sys
 The System Program is also an account on Solana. Let’s look at it.
 
 > solana account 11111111111111111111111111111111
+
 Notice the differences from your wallet:
 
 Executable is true, because this account contains program code
@@ -46,7 +52,9 @@ This is a fundamental insight: programs on Solana are just accounts with their E
 Solana has several native programs built into the runtime. Let’s inspect a couple more.
 
 > solana account Stake11111111111111111111111111111111111111
+
 > solana account Vote111111111111111111111111111111111111111
+
 These are the Stake Program and the Vote Program. Notice they share the same pattern as the System Program: Executable is true, and they are all owned by the Native Loader. These programs handle validator staking and voting on the network.
 
 #### Step 5: Explore a sysvar account
@@ -54,7 +62,9 @@ These are the Stake Program and the Vote Program. Notice they share the same pat
 Sysvar accounts are special read-only accounts at predefined addresses that expose cluster-wide state, such as the current time or the rent cost. They are like environment variables for the entire Solana network.
 
 > solana account SysvarC1ock11111111111111111111111111111111
+
 > solana account SysvarRent111111111111111111111111111111111
+
 Look at the output for each:
 
 The Clock sysvar holds the current slot, epoch, and Unix timestamp
@@ -67,7 +77,9 @@ Open Solana Explorer (devnet) in your browser. Paste in each of the addresses yo
 
 Your wallet address
 > 11111111111111111111111111111111 (System Program)
+
 > SysvarC1ock11111111111111111111111111111111 (Clock sysvar)
+
 The Explorer gives you the same information in a visual format, along with transaction history. Compare what you see on screen with the CLI output. Notice how the Explorer labels the account type (e.g., “System Program” or “Sysvar”) automatically.
 
 #### Step 7: Pull it all together with JSON output
@@ -75,5 +87,7 @@ The Explorer gives you the same information in a visual format, along with trans
 For a structured view, you can request JSON output from the CLI.
 
 > solana account $(solana address) --output json
+
 > solana account 11111111111111111111111111111111 --output json
+
 JSON output is useful when you want to pipe account data into scripts or compare fields programmatically. Take a moment to compare the two JSON outputs side by side: your wallet vs. the System Program. The differences in executable, owner, and data tell you everything about what kind of account you are looking at.

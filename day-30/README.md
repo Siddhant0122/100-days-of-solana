@@ -16,6 +16,7 @@ Run It
 >  --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb \
 >  --enable-metadata \
 >  --decimals 6
+
 Copy the token mint address from the output. You will use it in every step that follows.
 
 #### Step 2: Initialize metadata on your token
@@ -24,6 +25,7 @@ Now give your token an identity. The initialize-metadata command writes a name, 
 
 Run It
 >spl-token initialize-metadata [YOUR_TOKEN_ADDRESS] "100DaysCoin" "HUNDO" "https://raw.githubusercontent.com/solana-developers/opos-asset/main/assets/DeveloperPortal/metadata.json"
+
 Replace [YOUR_TOKEN_ADDRESS] with the mint address from Step 1. Feel free to choose your own name and symbol.
 
 #### Step 3: Create a token account
@@ -48,6 +50,7 @@ Verify that the tokens landed in your account.
 
 Run It
 >spl-token balance [YOUR_TOKEN_ADDRESS]
+
 You should see 1000.
 
 #### Step 6: Generate a second wallet and transfer tokens
@@ -67,5 +70,6 @@ Run It
 >spl-token balance [YOUR_TOKEN_ADDRESS]
 
 >spl-token balance --owner $(solana-keygen pubkey ~/second-wallet.json) [YOUR_TOKEN_ADDRESS]
+
 You should see 750 in your account and 250 in the second wallet.
 

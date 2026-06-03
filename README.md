@@ -12,3 +12,4 @@ Day 27: I posted a blog on Solana's Account Model.<br>
 Day 28: I posted a Solana explorer in details on DEV community. <br>
  
 ### Epoch2: Exploring token economics and incentives
+Day-34: I shared my experience of My First Token on Solana.<br>

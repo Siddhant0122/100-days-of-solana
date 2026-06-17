@@ -19,3 +19,4 @@ Day-42: I posted my work of day-38 on X(Twitter). <br>
 Day-48: I posted a recap of Week 7.<br>
 Day-49: I posted my work of past week on X(Twitter). <br>
 Day-55: I posted Token-2022 trilogy on DEV.<br>
+Day-56: I posted how I built non-transferable token on Solana using Token-2022 on X(Twitter).<br>

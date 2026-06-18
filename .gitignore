@@ -3,4 +3,11 @@ wallet.json
 .DS_Store
 nftH4oCDeqJBXWR8YX6yojnEyMhA3tPfQ9KP8Cj7s2n.json
 recipient.json
-counter
+.anchor
+.DS_Store
+target
+**/*.rs.bk
+node_modules
+test-ledger
+.yarn
+.surfpool

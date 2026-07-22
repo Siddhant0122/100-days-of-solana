@@ -24,3 +24,6 @@ Day-56: I posted how I built non-transferable token on Solana using Token-2022 o
 ### Epoch3: Your First Anchor Program
 Day-62: I posted a recap of week 9 on Dev. <br> 
 Day-63: I posted a my work on X(twitter). <br> 
+
+Day-69: I posted a recap of week 10 on Dev. <br> 
+Day-70: I posted a my work on X(twitter). <br> 

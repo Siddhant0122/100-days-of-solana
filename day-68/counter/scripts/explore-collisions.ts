@@ -77,7 +77,7 @@ async function main() {
     await program.methods
         .increment()
         .accounts({
-        counter: pdaB,
+        counter: pdaB, // Meant to give a error
         user: walletA,
         })
         .rpc();

@@ -1,4 +1,4 @@
-Try to make two PDAs share an address
+## Try to make two PDAs share an address
 
 Run the same PDA derivation twice and you get the same address. Run it from a different wallet, with the same seeds, and you still get the same address. That can be useful or dangerous, depending on how the seeds were designed.
 

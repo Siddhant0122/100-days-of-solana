@@ -36,3 +36,6 @@ Day-70: I posted my work on X(twitter). <br>
 
 Day-76: I posted a recap of week 11 on Dev. <br> 
 Day-77: I posted my work on X(twitter). <br> 
+
+Day-83: I posted a recap of week 12 on Dev. <br> 
+Day-84: I posted my work on X(twitter). <br> 

@@ -54,7 +54,7 @@ Two things to notice: anchor program upgrade takes the program ID as a positiona
 (Transferring to a key you cannot sign with here — a multisig, say — instead takes --skip-new-upgrade-authority-signer. Squads’ “Safe Authority Transfer” exists precisely to make that case safe.)
 
 8. The one-way door (do not run casually). --final removes the authority entirely and makes the program permanently immutable. There is no undo, on any cluster. Only ever run this on a program you intend to freeze for good.
-># Irreversible. Only ever run this on a program you intend to freeze for good.
+>Irreversible. Only ever run this on a program you intend to freeze for good.
 >solana program set-upgrade-authority [YOUR_PROGRAM_ID] --final
 
 ### Run it

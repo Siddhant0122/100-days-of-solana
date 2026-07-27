@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@anchor-lang/core": "^1.1.2",
+    "@google/genai": "^2.13.0"
+  }
+}

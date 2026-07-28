@@ -45,3 +45,5 @@ Day-91: I posted my work on X(twitter). <br>
 
 Day-97: I posted a recap of week 14 on Dev. <br> 
 Day-98: I posted my work on X(twitter). <br>
+
+# Day-100: Posted a recap of the whole journey on DEV.
